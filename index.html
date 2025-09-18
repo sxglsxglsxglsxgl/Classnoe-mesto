@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Classnoe Mesto</title>
+  <meta name="description" content="A conceptual space. Scroll narrative." />
+  <meta property="og:title" content="Classnoe Mesto" />
+  <meta property="og:description" content="A conceptual space. Scroll narrative." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1c1c1c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- Intro screen: centered title that scrolls away naturally -->
+  <section id="intro" aria-label="Intro">
+    <h1>Classnoe Mesto</h1>
+  </section>
+
+  <!-- Scroll content; text appears progressively, sentence by sentence -->
+  <main>
+    <section id="scroll-zone" aria-label="Scroll narrative">
+      <div id="sentences" role="list"></div>
+    </section>
+  </main>
+
+  <script>
+    // === EDIT TEXT HERE (English copy) ===
+    const SENTENCES = [
+      "In a world that can be cruel and unforgiving,",
+      "we, as young, curious, and brave kids, refuse to be daunted by its challenges.",
+      "We are born with an innate sense of curiosity, eager to explore and discover, even if it leads us into trouble.",
+      "Our youthful spirit drives us forward, pushing the boundaries of what is possible.",
+      "Despite the uncertainties and risks that accompany our curiosity, we embrace them wholeheartedly.",
+      "We understand that what we lack in experience, we make up for in daring."
+    ];
+    window.SITE_CONFIG = { SENTENCES };
+  </script>
+  <script defer src="./script.js"></script>
+</body>
+</html>
