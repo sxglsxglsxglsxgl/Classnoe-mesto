@@ -15,6 +15,67 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-controls="site-menu"
+    aria-expanded="false"
+    data-menu-toggle
+  >
+    <span class="menu-toggle__icon" aria-hidden="true">
+      <span class="menu-toggle__bar"></span>
+      <span class="menu-toggle__bar"></span>
+      <span class="menu-toggle__bar"></span>
+    </span>
+    <span class="visually-hidden" data-menu-toggle-label>Открыть меню</span>
+  </button>
+
+  <div class="menu-overlay" id="site-menu" data-menu-overlay aria-hidden="true">
+    <div class="menu-overlay__surface" role="dialog" aria-modal="true" aria-labelledby="site-menu-title">
+      <button class="menu-overlay__close" type="button" data-menu-close>
+        <span class="visually-hidden">Закрыть меню</span>
+        <span aria-hidden="true" class="menu-overlay__close-icon"></span>
+      </button>
+      <nav class="menu-overlay__nav" aria-labelledby="site-menu-title">
+        <h2 class="menu-overlay__title" id="site-menu-title">Classnoe Mesto</h2>
+        <p class="menu-overlay__subtitle">Навигация по пространству</p>
+        <ul class="menu-overlay__list">
+          <li>
+            <a class="menu-overlay__link" href="#intro" data-menu-link data-menu-initial-focus>О месте</a>
+          </li>
+          <li>
+            <a
+              class="menu-overlay__link"
+              href="https://example.com/classnoe-mesto-menu.pdf"
+              target="_blank"
+              rel="noopener"
+              data-menu-link
+            >
+              Меню (PDF)
+              <span class="menu-overlay__note" aria-hidden="true">Откроется в новой вкладке</span>
+              <span class="visually-hidden"> (откроется в новой вкладке)</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="menu-overlay__link"
+              href="https://maps.google.com/?q=Classnoe+Mesto"
+              target="_blank"
+              rel="noopener"
+              data-menu-link
+            >
+              Адрес
+              <span class="visually-hidden"> (откроется в новой вкладке)</span>
+            </a>
+          </li>
+          <li>
+            <a class="menu-overlay__link" href="mailto:hello@classnoemesto.example" data-menu-link>Контакты</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
   <!-- Intro screen: centered title that scrolls away naturally -->
   <section id="intro" aria-label="Intro">
     <h1>Classnoe Mesto</h1>
