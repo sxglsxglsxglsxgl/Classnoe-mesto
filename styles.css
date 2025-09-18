@@ -3,7 +3,7 @@
 html, body { height: 100%; margin: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #1e1e1e;
   color: #f2f2f2;
   line-height: 1.45;
@@ -155,7 +155,7 @@ body.menu-open {
   padding: 10px 16px;
   border-radius: 12px;
   transition: color 220ms ease, background 220ms ease;
-  font-family: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .menu-overlay__link:focus-visible,
@@ -178,16 +178,16 @@ body.menu-open {
 }
 #intro h1 {
   margin: 0;
-  font-size: clamp(30px, 6vw, 80px);
-  font-weight: 600;
-  letter-spacing: 0.24em;
+  font-size: clamp(16px, 5.5vw, 82px);
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.88);
   text-align: center;
-  line-height: 1.2;
-  padding-left: 10vw;
-  padding-right: 10vw;
-  font-family: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.1;
+  padding-inline: clamp(8px, 3vw, 48px);
+  font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  white-space: nowrap;
 }
 
 /* Scroll zone */
@@ -223,7 +223,7 @@ body.menu-open {
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.35;
-  font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: rgba(255, 255, 255, 0.08);
   opacity: 0;
   filter: blur(28px);

@@ -43,12 +43,18 @@
   }
 
   function updateActiveSentence() {
-    const viewportCenter = window.innerHeight / 2;
+    const viewportHeight = window.innerHeight;
+    const viewportCenter = viewportHeight / 2;
     let closestIndex = -1;
     let smallestDistance = Infinity;
 
     nodes.forEach((node, index) => {
       const rect = node.getBoundingClientRect();
+      const isInViewport = rect.bottom > 0 && rect.top < viewportHeight;
+      if (!isInViewport) {
+        return;
+      }
+
       const nodeCenter = rect.top + rect.height / 2;
       const distance = Math.abs(nodeCenter - viewportCenter);
 
