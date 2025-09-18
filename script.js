@@ -1,60 +1,86 @@
 (function() {
   const { SENTENCES } = window.SITE_CONFIG || {};
+  if (!Array.isArray(SENTENCES) || SENTENCES.length === 0) return;
 
   const list = document.getElementById('sentences');
-  let scrollDirection = 0;  // Track scroll direction (up or down)
+  if (!list) return;
 
-  // Build sentence nodes
-  const nodes = SENTENCES.map((text, idx) => {
-    const p = document.createElement('p');
-    p.className = 'sentence';
-    p.textContent = text;
-    p.setAttribute('role', 'listitem');
-    p.setAttribute('aria-setsize', SENTENCES.length);
-    p.setAttribute('aria-posinset', String(idx + 1));
-    list.appendChild(p);
-    return p;
+  const total = SENTENCES.length;
+  const nodes = SENTENCES.map((text, index) => {
+    const sentence = document.createElement('p');
+    sentence.className = 'sentence';
+    sentence.textContent = text;
+    sentence.setAttribute('role', 'listitem');
+    sentence.setAttribute('aria-setsize', total);
+    sentence.setAttribute('aria-posinset', String(index + 1));
+    list.appendChild(sentence);
+    return sentence;
   });
 
-  // IntersectionObserver for sentence visibility based on scrolling
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const el = entry.target;
-      if (entry.isIntersecting) {
-        el.classList.add('visible');
-        // Dim previous sentences one by one
-        const idx = nodes.indexOf(el);
-        nodes.forEach((node, i) => {
-          if (i < idx) node.classList.add('dimmed');
-        });
+  let activeIndex = -1;
+  const revealed = new Set();
+  let ticking = false;
+
+  function applyStates(currentIndex) {
+    nodes.forEach((node, index) => {
+      const isActive = index === currentIndex;
+      const isPast = index < currentIndex;
+      const hasBeenRevealed = revealed.has(index) || isPast || isActive;
+
+      if (isPast) {
+        revealed.add(index);
+      }
+
+      node.classList.toggle('is-active', isActive);
+      node.classList.toggle('is-past', isPast);
+      node.classList.toggle('is-visible', hasBeenRevealed);
+
+      if (!hasBeenRevealed) {
+        node.classList.remove('is-past');
+        node.classList.remove('is-active');
       }
     });
-  }, { root: null, rootMargin: '0px 0px -45% 0px', threshold: 0.4 });
+  }
 
-  nodes.forEach(n => io.observe(n));
+  function updateActiveSentence() {
+    const viewportCenter = window.innerHeight / 2;
+    let closestIndex = -1;
+    let smallestDistance = Infinity;
 
-  // Scroll direction tracking (up or down) and text fade out
-  let lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > lastScrollY) {
-      // Scrolling down: text becomes brighter
-      scrollDirection = 1;
-    } else {
-      // Scrolling up: text disappears one by one
-      scrollDirection = -1;
+    nodes.forEach((node, index) => {
+      const rect = node.getBoundingClientRect();
+      const nodeCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(nodeCenter - viewportCenter);
+
+      if (distance < smallestDistance) {
+        smallestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex === -1) return;
+
+    if (!revealed.has(closestIndex)) {
+      revealed.add(closestIndex);
     }
-    lastScrollY = window.scrollY;
-    // Apply fade effects
-    nodes.forEach((node, i) => {
-      if (scrollDirection === -1) {
-        node.style.opacity = 0;
-        node.style.transform = 'translateY(12px)';
-      } else {
-        node.style.opacity = 1;
-        node.style.transform = 'translateY(0)';
-      }
+
+    activeIndex = closestIndex;
+    applyStates(activeIndex);
+  }
+
+  function requestUpdate() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      updateActiveSentence();
     });
-  });
+  }
+
+  updateActiveSentence();
+  requestAnimationFrame(updateActiveSentence);
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
 })();
 
 (function() {
