@@ -96,8 +96,8 @@ body.menu-open {
   inset: 0;
   display: flex;
   justify-content: center;
-  align-items: stretch;
-  padding: 0;
+  align-items: center;
+  padding: clamp(24px, 6vw, 48px);
   background: rgba(12, 12, 12, 0.86);
   backdrop-filter: blur(8px);
   opacity: 0;
@@ -116,17 +116,21 @@ body.menu-open {
 
 .menu-overlay__surface {
   position: relative;
-  flex: 1;
-  max-width: 720px;
+  flex: 0 1 auto;
+  width: min(360px, 90vw);
   margin: 0;
-  padding: clamp(72px, 12vh, 140px) clamp(32px, 9vw, 160px);
+  padding: clamp(24px, 6vw, 32px) clamp(20px, 5vw, 32px);
   display: flex;
   flex-direction: column;
-  gap: clamp(40px, 8vh, 96px);
-  color: rgba(255, 255, 255, 0.92);
-  transform: translateY(24px);
+  gap: clamp(16px, 4vh, 24px);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(22, 22, 22, 0.95);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  transform: translateY(16px);
   opacity: 0;
-  transition: transform 650ms ease, opacity 650ms ease;
+  transition: transform 520ms ease, opacity 520ms ease;
 }
 
 .menu-overlay.is-open .menu-overlay__surface {
@@ -136,21 +140,21 @@ body.menu-open {
 
 .menu-overlay__close {
   position: absolute;
-  top: clamp(16px, 4vw, 32px);
-  right: clamp(16px, 4vw, 32px);
-  width: 48px;
-  height: 48px;
+  top: clamp(8px, 3vw, 16px);
+  right: clamp(8px, 3vw, 16px);
+  width: 44px;
+  height: 44px;
   min-width: 44px;
   min-height: 44px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   color: inherit;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background 260ms ease, border-color 260ms ease;
+  transition: background 240ms ease, border-color 240ms ease;
 }
 
 .menu-overlay__close:hover,
@@ -193,22 +197,7 @@ body.menu-open {
 .menu-overlay__nav {
   display: flex;
   flex-direction: column;
-  gap: clamp(32px, 6vh, 72px);
-}
-
-.menu-overlay__title {
-  margin: 0;
-  font-size: clamp(32px, 6vw, 72px);
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.menu-overlay__subtitle {
-  margin: 0;
-  font-size: clamp(16px, 2.4vw, 22px);
-  color: rgba(255, 255, 255, 0.56);
-  max-width: 32ch;
+  gap: clamp(12px, 2vh, 20px);
 }
 
 .menu-overlay__list {
@@ -217,47 +206,43 @@ body.menu-open {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(20px, 4vh, 42px);
+  gap: clamp(12px, 2vh, 18px);
 }
 
 .menu-overlay__link {
-  position: relative;
   display: inline-flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: clamp(30px, 5vw, 58px);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.9);
+  align-items: center;
+  justify-content: flex-start;
+  font-size: clamp(18px, 3.6vw, 22px);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
-  transition: color 320ms ease;
+  padding: 10px 12px;
+  border-radius: 12px;
+  transition: color 220ms ease, background 220ms ease;
 }
 
 .menu-overlay__link:focus-visible,
 .menu-overlay__link:hover {
   color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .menu-overlay__link:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.6);
-  outline-offset: 6px;
-}
-
-.menu-overlay__note {
-  font-size: clamp(12px, 2.2vw, 14px);
-  font-weight: 400;
-  letter-spacing: 0;
-  color: rgba(255, 255, 255, 0.56);
+  outline: 2px solid rgba(255, 255, 255, 0.35);
+  outline-offset: 2px;
 }
 
 @media (max-width: 640px) {
   .menu-overlay__surface {
-    padding: clamp(56px, 10vh, 96px) clamp(20px, 8vw, 64px);
+    width: min(320px, 92vw);
+    padding: clamp(20px, 8vw, 28px) clamp(16px, 8vw, 24px);
   }
 
   .menu-overlay__close {
-    top: clamp(12px, 4vw, 24px);
-    right: clamp(12px, 4vw, 24px);
+    top: 12px;
+    right: 12px;
   }
 }
 

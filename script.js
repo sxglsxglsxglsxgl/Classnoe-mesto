@@ -84,30 +84,11 @@
   }
 
   function lockScroll() {
-    const scrollY = window.scrollY || window.pageYOffset || 0;
-    document.body.dataset.menuScrollPosition = String(scrollY);
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
     document.body.classList.add('menu-open');
   }
 
   function unlockScroll() {
-    const stored = document.body.dataset.menuScrollPosition;
     document.body.classList.remove('menu-open');
-    document.body.style.removeProperty('top');
-    document.body.style.removeProperty('left');
-    document.body.style.removeProperty('right');
-    document.body.style.removeProperty('position');
-    document.body.style.removeProperty('width');
-
-    if (stored) {
-      const value = parseInt(stored, 10) || 0;
-      delete document.body.dataset.menuScrollPosition;
-      window.scrollTo(0, value);
-    }
   }
 
   function getFocusableElements() {
