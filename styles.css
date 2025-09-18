@@ -147,10 +147,11 @@ body.menu-open {
   align-items: center;
   justify-content: center;
   font-size: clamp(18px, 3.6vw, 22px);
-  font-weight: 500;
-  letter-spacing: -0.005em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
+  text-transform: uppercase;
   padding: 10px 16px;
   border-radius: 12px;
   transition: color 220ms ease, background 220ms ease;
@@ -178,7 +179,8 @@ body.menu-open {
   margin: 0;
   font-size: clamp(30px, 6vw, 80px);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
   color: rgba(255,255,255,0.85);
   text-align: center;
   line-height: 1.2;

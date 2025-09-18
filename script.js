@@ -77,10 +77,19 @@
     });
   }
 
-  updateActiveSentence();
-  requestAnimationFrame(updateActiveSentence);
+  function scheduleInitialReveal() {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        updateActiveSentence();
+      });
+    });
+  }
+
+  scheduleInitialReveal();
+  window.addEventListener('load', scheduleInitialReveal, { once: true });
   window.addEventListener('scroll', requestUpdate, { passive: true });
   window.addEventListener('resize', requestUpdate);
+  window.addEventListener('orientationchange', requestUpdate);
 })();
 
 (function() {
