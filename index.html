@@ -30,30 +30,32 @@
     <span class="visually-hidden" data-menu-toggle-label>Открыть меню</span>
   </button>
 
-  <div class="menu-overlay" id="site-menu" data-menu-overlay aria-hidden="true">
-    <div class="menu-overlay__surface" role="dialog" aria-modal="true" aria-labelledby="site-menu-title">
-      <button class="menu-overlay__close" type="button" data-menu-close>
-        <span class="visually-hidden">Закрыть меню</span>
-        <span aria-hidden="true" class="menu-overlay__close-icon"></span>
-      </button>
-      <nav class="menu-overlay__nav" aria-labelledby="site-menu-title">
-        <h2 class="visually-hidden" id="site-menu-title">Навигация</h2>
-        <ul class="menu-overlay__list">
-          <li>
-            <a class="menu-overlay__link" href="#menu" data-menu-link data-menu-initial-focus>Меню</a>
-          </li>
-          <li>
-            <a class="menu-overlay__link" href="#booking" data-menu-link>Бронь</a>
-          </li>
-          <li>
-            <a class="menu-overlay__link" href="#history" data-menu-link>История</a>
-          </li>
-          <li>
-            <a class="menu-overlay__link" href="#contacts" data-menu-link>Контакты</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+  <div
+    class="menu-overlay"
+    id="site-menu"
+    data-menu-overlay
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="site-menu-title"
+  >
+    <nav class="menu-overlay__nav" aria-labelledby="site-menu-title">
+      <h2 class="visually-hidden" id="site-menu-title">Навигация</h2>
+      <ul class="menu-overlay__list">
+        <li>
+          <a class="menu-overlay__link" href="#menu" data-menu-link data-menu-initial-focus>Меню</a>
+        </li>
+        <li>
+          <a class="menu-overlay__link" href="#booking" data-menu-link>Бронь</a>
+        </li>
+        <li>
+          <a class="menu-overlay__link" href="#history" data-menu-link>История</a>
+        </li>
+        <li>
+          <a class="menu-overlay__link" href="#contacts" data-menu-link>Контакты</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 
   <!-- Intro screen: centered title that scrolls away naturally -->

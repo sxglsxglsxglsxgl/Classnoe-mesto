@@ -63,7 +63,6 @@
   if (!toggle || !overlay) return;
 
   const toggleLabel = toggle.querySelector('[data-menu-toggle-label]');
-  const closeButtons = overlay.querySelectorAll('[data-menu-close]');
   const menuLinks = overlay.querySelectorAll('[data-menu-link]');
   const initialFocusTarget = overlay.querySelector('[data-menu-initial-focus]');
   const focusableSelector = [
@@ -187,10 +186,6 @@
     if (event.target === overlay) {
       closeMenu();
     }
-  });
-
-  closeButtons.forEach(btn => {
-    btn.addEventListener('click', closeMenu);
   });
 
   menuLinks.forEach(link => {
